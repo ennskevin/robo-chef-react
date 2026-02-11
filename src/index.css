@@ -1,0 +1,92 @@
+body {
+  margin: 0 auto;
+  font-family: Quicksand, sans-serif;
+  /* background-color: rgb(64, 226, 124); */
+  background-color: rgb(245, 245, 245);
+}
+
+header {
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.15);
+  background-color: rgb(38, 203, 98);
+
+  background: linear-gradient(90deg, #26cb62 0%, #1aaa48 100%);
+}
+
+.header-container {
+  max-width: 960px;
+  margin: 0 auto;
+  height: 100px;
+  min-height: 80px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  color: white;
+}
+
+.header-logo {
+  width: 62px;
+}
+
+.brand {  
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+
+  font-size: 1.8rem;
+  letter-spacing: 1.3px;
+  font-variant-caps: small-caps;
+  font-weight:500;
+}
+
+.brand-top {
+  transform: translateX(0);
+}
+
+.brand-bottom {
+  transform: translateX(50px);
+}
+
+main {
+  padding: 50px 30px 10px;
+}
+
+.add-ingredient-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  height: 38px;
+}
+
+.add-ingredient-form > input {
+  border-radius: 6px;
+  border: 1px solid #bcd2c4;
+  padding: 9px 13px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  min-width: 140px;
+  max-width: 400px;
+  font-family: Quicksand, sans-serif;
+}
+
+.add-ingredient-form > button {
+  font-family: Quicksand, sans-serif;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: none;
+  /* padding: 5px 16px; */
+  background-color: #0f692b;
+  color: white;
+  font-variant-caps: small-caps;
+  width: 185px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+
+.add-ingredient-form > button::before {
+  content: "+";
+  margin-right: 5px;
+}
