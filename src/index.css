@@ -12,7 +12,7 @@ header {
   background: linear-gradient(90deg, #26cb62 0%, #1aaa48 100%);
 }
 
-.header-container {
+header > .container {
   max-width: 960px;
   margin: 0 auto;
   height: 100px;
@@ -50,8 +50,13 @@ header {
   transform: translateX(50px);
 }
 
-main {
-  padding: 50px 30px 10px;
+main > .container {
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 75px 30px 10px;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .add-ingredient-form {
@@ -59,6 +64,7 @@ main {
   justify-content: center;
   gap: 12px;
   height: 38px;
+  margin: 0 40px;
 }
 
 .add-ingredient-form > input {
@@ -84,9 +90,44 @@ main {
   width: 185px;
   font-weight: 500;
   letter-spacing: 0.8px;
+  cursor: pointer;
 }
 
 .add-ingredient-form > button::before {
   content: "+";
   margin-right: 5px;
+}
+
+.ingredients-header {
+  margin: 55px 40px 0;
+
+  font-size: 1.9rem;
+  font-weight: 600;
+
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: fadeSlideIn 300ms ease-out forwards;
+}
+
+.ingredient-list {
+  margin:25px 20px 0;
+}
+
+.ingredient-list > li {
+}
+
+.ingredient-item {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideIn 300ms ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
