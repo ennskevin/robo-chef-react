@@ -1,58 +1,61 @@
 import { useEffect, useState } from "react"
 
+import IngredientsList from "./IngredientsList"
+import Recipe from "./Recipe"
+
 export default function Main() {
 
-    const [ingredients, setIngredients] = useState<string []>([])
+    const [ingredients, setIngredients] = useState<string[]>([])
 
-    const ingredientsHeader = ingredients.length
-        ? <h1 className="ingredients-header">Ingredients on hand:</h1>
-        : <></>
+    function addIngredient(formData: FormData) {
+        console.log("Form submitted")
+        console.log(ingredients.length)
 
-    function addIngredient(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        console.log("Form submitted!")
-        
-        const formData = new FormData(event.currentTarget)
         const ingredient = formData.get("ingredient")
-        
-        if (typeof ingredient === "string") {
-            setIngredients(prev => {
-                return [...prev, ingredient]
-            })
-            event.currentTarget.reset()
-        }
-        
+        if (!ingredient || typeof ingredient !== "string") return
+        setIngredients(prev => [...prev, ingredient])
+
+        console.log(Object.fromEntries(formData))
     }
 
     useEffect(() => {
         console.log(ingredients)
     }, [ingredients])
-    
-    const ingredientsListItems = ingredients.map((ingredient) => {
-        return <li className="ingredient-item" key={ingredient}>{ingredient}</li>
-    })
+
+    const [recipeShown, setRecipeShown] = useState(false)
+
+    function toggleRecipeShown() {
+        setRecipeShown(prev => !prev)
+    }
 
     return (
         <>
             <main>
                 <div className="container">
 
-                    <form onSubmit={addIngredient} className="add-ingredient-form">
+                    <form action={addIngredient} className="add-ingredient-form">
                         <input
                             type="text"
+                            name="ingredient"
                             placeholder="e.g. oregano"
                             aria-label="Add ingredient"
-                            name="ingredient"
                             autoComplete="off"
                         />
                         <button>add ingredient</button>
                     </form>
 
-                    {ingredientsHeader}
+                    {ingredients.length ? 
+                        <IngredientsList 
+                            ingredients={ingredients}
+                            toggleRecipeShown={toggleRecipeShown}
+                        /> 
+                        : null
+                    }
 
-                    <ul className="ingredient-list">
-                        {ingredientsListItems}
-                    </ul>
+                    {recipeShown ? 
+                        <Recipe />
+                        : null
+                    }
 
                 </div>
             </main>
