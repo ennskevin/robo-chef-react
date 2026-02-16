@@ -6,6 +6,13 @@ body {
 }
 
 header {
+  /* FIX HEADER TO TOP */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.15);
   background-color: rgb(38, 203, 98);
 
@@ -48,6 +55,10 @@ header > .container {
 
 .brand-bottom {
   transform: translateX(50px);
+}
+
+main {
+  padding-top: 100px;
 }
 
 main > .container {
@@ -113,9 +124,6 @@ main > .container {
   margin:25px 20px 0;
 }
 
-.ingredient-list > li {
-}
-
 .ingredient-item {
   margin-bottom: 10px;
   font-size: 1.25rem;
@@ -130,4 +138,12 @@ main > .container {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.get-recipe-container {
+  margin: 40px 40px 0;
+}
+
+.recipe {
+  margin: 40px 40px 0;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 import IngredientsList from "./IngredientsList"
 import Recipe from "./Recipe"
+import { getRecipeFromMistral } from "../ai"
 
 export default function Main() {
 
@@ -22,10 +23,12 @@ export default function Main() {
         console.log(ingredients)
     }, [ingredients])
 
-    const [recipeShown, setRecipeShown] = useState(false)
+    const [recipe, setRecipe] = useState("")
 
-    function toggleRecipeShown() {
-        setRecipeShown(prev => !prev)
+    async function getRecipe() {
+        const response = await getRecipeFromMistral(ingredients)
+        if (!response || typeof response !== "string") return
+        setRecipe(response)
     }
 
     return (
@@ -47,18 +50,20 @@ export default function Main() {
                     {ingredients.length ? 
                         <IngredientsList 
                             ingredients={ingredients}
-                            toggleRecipeShown={toggleRecipeShown}
+                            getRecipe={getRecipe}
                         /> 
                         : null
                     }
 
-                    {recipeShown ? 
-                        <Recipe />
+                    {recipe ? 
+                        <Recipe recipe={recipe} />
                         : null
                     }
 
                 </div>
             </main>
+
+
         </>
     )
 }

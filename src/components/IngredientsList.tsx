@@ -2,10 +2,10 @@ import type { JSX } from "react";
 
 type Props = {
     ingredients: string[];
-    toggleRecipeShown: () => void;
+    getRecipe: () => void;
 }
 
-export default function IngredientsList({ ingredients, toggleRecipeShown}: Props) {
+export default function IngredientsList({ ingredients, getRecipe}: Props) {
     const ingredientsListItems = ingredients.map(ingredient => {
         return <li className="ingredient-item" key={ingredient}>{ingredient}</li>
     })
@@ -22,7 +22,7 @@ export default function IngredientsList({ ingredients, toggleRecipeShown}: Props
                                 <h3>Ready for a recipe?</h3>
                                 <p>Generate a recipe from your list of ingredients.</p>
                             </div>
-                            <button onClick={toggleRecipeShown}>Get a recipe</button>
+                            <button onClick={getRecipe}>Get a recipe</button>
                         </div>
                         : null
                     }
