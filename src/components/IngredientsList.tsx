@@ -13,7 +13,7 @@ export default function IngredientsList({ ingredients, getRecipe}: Props) {
     return (
         <>
             {ingredients.length ?
-                <section>
+                <section className="ingredients-component">
                     <h1 className="ingredients-header">Ingredients on hand:</h1>
                     <ul className="ingredient-list">{ingredientsListItems}</ul>
                     {ingredients.length > 3 ?
@@ -22,7 +22,7 @@ export default function IngredientsList({ ingredients, getRecipe}: Props) {
                                 <h3>Ready for a recipe?</h3>
                                 <p>Generate a recipe from your list of ingredients.</p>
                             </div>
-                            <button onClick={getRecipe}>Get a recipe</button>
+                            <button onClick={getRecipe}>request a recipe</button>
                         </div>
                         : null
                     }

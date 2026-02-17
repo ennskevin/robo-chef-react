@@ -1,3 +1,7 @@
+:root {
+  --primary-button-color: #0f692c
+}
+
 body {
   margin: 0 auto;
   font-family: Quicksand, sans-serif;
@@ -64,10 +68,15 @@ main {
 main > .container {
   max-width: 800px;
   margin: 0px auto;
-  padding: 75px 30px 10px;
+  padding: 60px 30px 10px;
   display: flex;
   flex-direction: column;
 
+}
+
+.ingredients-component {
+  display: flex;
+  flex-direction: column;
 }
 
 .add-ingredient-form {
@@ -95,7 +104,7 @@ main > .container {
   border-radius: 6px;
   border: none;
   /* padding: 5px 16px; */
-  background-color: #0f692b;
+  background-color: var(--primary-button-color);
   color: white;
   font-variant-caps: small-caps;
   width: 185px;
@@ -141,9 +150,48 @@ main > .container {
 }
 
 .get-recipe-container {
-  margin: 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 40px 20px;
+  padding: 10px 0 20px;
+  width: 500px;
+  align-self: center;
+
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+}
+
+.get-recipe-container  button {
+  font-family: Quicksand, sans-serif;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  border: none;
+  padding: 15px 16px 18px;
+  background-color: var(--primary-button-color);
+  color: white;
+  font-variant-caps: small-caps;
+  width: 185px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  align-self: center;
 }
 
 .recipe {
   margin: 40px 40px 0;
+  
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: fadeSlideIn 400ms ease-out forwards
+}
+
+.recipe > .container {
+  line-height: 30px;
+  font-size: 1.125rem;
+  margin-bottom: 90px;
+}
+
+.recipe ul, .recipe ol {
+  padding: 25px 30px 0;
 }
