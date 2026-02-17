@@ -8,8 +8,9 @@ type Props = {
 export default function Recipe({ recipe }: Props) {
 
     return (
-        <section className="recipe">
+        <section className="recipe" aria-live="polite">
             <div className="container">
+                <h2>Our dearest Robo Chef recommends:</h2>
                 <ReactMarkdown children={recipe} remarkPlugins={[remarkGfm]} />
             </div>
         </section>
