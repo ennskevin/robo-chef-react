@@ -10,7 +10,7 @@ export default function Recipe({ recipe }: Props) {
     return (
         <section className="recipe" aria-live="polite">
             <div className="container">
-                <h2>Our dearest Robo Chef recommends:</h2>
+                <h3>Robo Chef Recommends:</h3>
                 <ReactMarkdown children={recipe} remarkPlugins={[remarkGfm]} />
             </div>
         </section>

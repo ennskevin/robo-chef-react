@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
 import IngredientsList from "./IngredientsList"
 import Recipe from "./Recipe"
-import { getRecipeFromMistral } from "../ai"
+import { getRecipeFromBackend } from "../ai"
 
 export default function Main() {
 
     const [ingredients, setIngredients] = useState<string[]>([])
+    const [recipe, setRecipe] = useState("")
+    const recipeSection = useRef<HTMLDivElement>(null)
+    console.log(recipeSection)
 
     function addIngredient(formData: FormData) {
         console.log("Form submitted")
@@ -23,13 +26,19 @@ export default function Main() {
         console.log(ingredients)
     }, [ingredients])
 
-    const [recipe, setRecipe] = useState("")
-
     async function getRecipe() {
-        const response = await getRecipeFromMistral(ingredients)
+        const response = await getRecipeFromBackend(ingredients)
         if (!response || typeof response !== "string") return
         setRecipe(response)
     }
+
+    useEffect(() => {
+        if (!recipe && !recipeSection) return
+        recipeSection.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
+    }, [recipe])
 
     return (
         <>
@@ -51,6 +60,7 @@ export default function Main() {
                         <IngredientsList 
                             ingredients={ingredients}
                             getRecipe={getRecipe}
+                            recipeSection={recipeSection}
                         /> 
                         : null
                     }

@@ -9,6 +9,10 @@ body {
   background-color: rgb(245, 245, 245);
 }
 
+.scroll-target {
+  scroll-margin-top: 128px;
+}
+
 header {
   /* FIX HEADER TO TOP */
   position: fixed;
@@ -195,6 +199,10 @@ main > .container {
   line-height: 30px;
   font-size: 1.125rem;
   margin-bottom: 90px;
+}
+
+.recipe h1 {
+  line-height: 45px;
 }
 
 .recipe ul, .recipe ol {
