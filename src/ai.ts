@@ -3,7 +3,7 @@ export async function getRecipeFromBackend(
 ): Promise<string | undefined> 
 {
     try {
-        const response = await fetch("https://o4xyi54m30.execute-api.us-east-2.amazonaws.com/throttle/robo-chef-api", {
+        const response = await fetch("https://o4xyi54m30.execute-api.us-east-2.amazonaws.com/default/robo-chef-api", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
